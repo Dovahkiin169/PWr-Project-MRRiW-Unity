@@ -1,4 +1,4 @@
-com.CarCompany.Car
+com.DefaultCompany.Car1
 color colorAccent
 color colorPrimary
 color colorPrimaryDark

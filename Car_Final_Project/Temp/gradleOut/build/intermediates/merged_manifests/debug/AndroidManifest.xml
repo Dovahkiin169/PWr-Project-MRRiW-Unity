@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.CarCompany.Car"
+    package="com.DefaultCompany.Car1"
     android:installLocation="preferExternal"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="0.1" >
 
     <uses-sdk
         android:minSdkVersion="22"
@@ -17,9 +17,6 @@
         android:xlargeScreens="true" />
 
     <uses-feature android:glEsVersion="0x00030000" />
-    <uses-feature
-        android:name="android.hardware.vulkan"
-        android:required="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -87,7 +84,7 @@
 
         <meta-data
             android:name="unity.build-id"
-            android:value="7040026f-6401-48f0-bca6-d2dcc4cdba29" />
+            android:value="a270d09e-eebf-495b-a01c-aa967ccee445" />
         <meta-data
             android:name="unity.splash-mode"
             android:value="0" />
