@@ -105,6 +105,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 128
       Script: {instanceID: 0}
+    - Class: 134
+      Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 213
@@ -1134,7 +1136,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 2b051413048723d7ee11edcc72011c02
+      Hash: 0f6472e4c7675483b9e78a0e49476340
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Car1_controller
@@ -1975,4 +1977,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/main.unity
-  playerPath: /Users/dmitriyverhovskiy/Downloads/car_ar_gme/New Unity Project (1)_Car1/tt.apk
+  playerPath: /Users/dmitriyverhovskiy/Downloads/Nowaja Kakszka

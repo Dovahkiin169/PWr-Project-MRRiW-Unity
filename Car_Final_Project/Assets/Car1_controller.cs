@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class Car1_controller : MonoBehaviour {
 
 	private Animation anim;
+	public Score score;
+	public Text scoreText;
+
 
 	private Rigidbody rb;
     public float Speed = 5.0f;
@@ -15,6 +18,8 @@ public class Car1_controller : MonoBehaviour {
 	void Start () {
 		//anim = GetComponent<Animation> ();
 		rb = GetComponent<Rigidbody> ();
+		scoreText = GameObject.Find("Scoretext").GetComponent<Text>(); 
+		
 	}
 
 	// Update is called once per frame
@@ -44,6 +49,7 @@ public class Car1_controller : MonoBehaviour {
                     Debug.Log ("onResume Received");
                     AndroidJavaClass jc = new AndroidJavaClass ("com.unity3d.player.UnityPlayer"); 
                     AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject> ("currentActivity"); 
+					jo.Call("shareText",scoreText.text);
                     jo.Call ("onBackPressed");
             }
 

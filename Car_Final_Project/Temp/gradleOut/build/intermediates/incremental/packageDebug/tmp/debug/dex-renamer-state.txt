@@ -1,7 +1,0 @@
-#Thu Oct 17 15:22:51 CEST 2019
-base.0=/Users/dmitriyverhovskiy/Downloads/car_ar_gme/New Unity Project (1)_Car1/Temp/gradleOut/build/intermediates/transforms/dexMerger/debug/0
-path.1=classes.dex
-renamed.1=classes2.dex
-path.0=classes.dex
-renamed.0=classes.dex
-base.1=/Users/dmitriyverhovskiy/Downloads/car_ar_gme/New Unity Project (1)_Car1/Temp/gradleOut/build/intermediates/transforms/dexMerger/debug/1
