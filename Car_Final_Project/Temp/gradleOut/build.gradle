@@ -42,12 +42,12 @@ android {
     defaultConfig {
         minSdkVersion 22
         targetSdkVersion 29
-        applicationId 'com.CarCompany.Car'
+        applicationId 'com.DefaultCompany.Car1'
         ndk {
             abiFilters 'armeabi-v7a'
         }
         versionCode 1
-        versionName '1.0'
+        versionName '0.1'
     }
 
     lintOptions {

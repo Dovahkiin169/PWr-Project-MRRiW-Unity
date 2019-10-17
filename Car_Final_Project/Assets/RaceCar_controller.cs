@@ -9,8 +9,8 @@ public class RaceCar_controller : MonoBehaviour {
 	private Animation anim;
 
 	private Rigidbody rb;
-    public float movementSpeedRaceCar = 20.0f;
-    public float rotationSpeedRaceCar = 5.0f;
+    public float movementSpeedNewRaceCar = 20.0f;
+    public float rotationSpeedNewRaceCar = 5.0f;
 	// Use this for initialization
 	void Start () {
 		//anim = GetComponent<Animation> ();
@@ -32,8 +32,8 @@ public class RaceCar_controller : MonoBehaviour {
 		//enter trumps speed here!!!
 		//rb.velocity = movement * 4f;
 
-		transform.Rotate(0, x * Time.deltaTime * rotationSpeedRaceCar, 0);
-        transform.Translate(0, 0, -y * Time.deltaTime * movementSpeedRaceCar);
+		transform.Rotate(0, x * Time.deltaTime * rotationSpeedNewRaceCar, 0);
+        transform.Translate(0, 0, -y * Time.deltaTime * movementSpeedNewRaceCar);
 		//rb.AddForce(new Vector3(x, 0.0f, y) * speed);
 
 		/*if (x != 0 && y != 0) {
