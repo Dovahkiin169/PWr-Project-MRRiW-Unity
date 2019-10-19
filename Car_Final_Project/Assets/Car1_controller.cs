@@ -12,38 +12,48 @@ public class Car1_controller : MonoBehaviour {
 
 
 	private Rigidbody rb;
-    public float Speed = 5.0f;
+    public float Speed = 90.0f;
     public float rotationSpeed = 45.0f;
+
+	private float referenceYPosition;
+
 	// Use this for initialization
 	void Start () {
 		//anim = GetComponent<Animation> ();
 		rb = GetComponent<Rigidbody> ();
 		scoreText = GameObject.Find("Scoretext").GetComponent<Text>(); 
 		
+		referenceYPosition = transform.localPosition.y;
 	}
 
 	// Update is called once per frame
 	void Update () {
-
+		//getting player inpuit
 		float x = CrossPlatformInputManager.GetAxis ("Horizontal");
 		float y = CrossPlatformInputManager.GetAxis ("Vertical");
-	
 
-		//transform.position += new Vector3(0,0,y/10);
-		//transform.position += new Vector3(x/10,0,0);
+		//movement by force
+		if(y != 0)
+		{
+			var forwardForce = y * transform.forward * Speed * Time.deltaTime;
+			//var turningForce = x * transform.right * rotationSpeed * Time.deltaTime; 
 
-		//Vector3 movement = new Vector3 (x, 0.0f, y);
+			rb.AddForce(forwardForce);
+			transform.Rotate(0, x * Time.deltaTime * rotationSpeed, 0);
+		}
+		//dampening sliding
+		var dampening = Vector3.Dot(transform.right, rb.velocity) * transform.right;
+		var dampeningImpulse = -dampening * rb.mass;
+		rb.AddForce(dampeningImpulse * Time.deltaTime);
 
-		//enter trumps speed here!!!
-		//rb.velocity = movement * 4f;
+		// removing unwanted rotations after any collisions
+		var oldYRotation = transform.localEulerAngles.y;
+		transform.localEulerAngles = new Vector3(0, oldYRotation, 0);
 
-		transform.Rotate(0, x * Time.deltaTime * rotationSpeed, 0);
-        transform.Translate(0, 0, y * Time.deltaTime * Speed);
-		//rb.AddForce(new Vector3(x, 0.0f, y) * speed);
-
-		/*if (x != 0 && y != 0) {
-			transform.eulerAngles = new Vector3 (transform.eulerAngles.x, Mathf.Atan2 (x, y) * Mathf.Rad2Deg, transform.eulerAngles.z);
-		}*/
+		//remove y changes after any collisions
+		var actualXPosition = transform.localPosition.x;
+		var actualZPosition = transform.localPosition.z;
+		transform.localPosition = new Vector3(actualXPosition, referenceYPosition, actualZPosition);
 
 		if (Input.GetKeyUp (KeyCode.Escape)) {
                     Debug.Log ("onResume Received");
@@ -52,10 +62,6 @@ public class Car1_controller : MonoBehaviour {
 					jo.Call("shareText",scoreText.text);
                     jo.Call ("onBackPressed");
             }
-
-		//if (Input.GetKeyDown(KeyCode.Escape)){
-	//		Application.Quit(); 
-	//	}  
 	}	
 }
 
