@@ -16,6 +16,8 @@ public class Car1_controller : MonoBehaviour {
     public float rotationSpeed = 45.0f;
 
 	private float referenceYPosition;
+	public VJPedal accelerator;
+	public VJPedal brake;
 
 	// Use this for initialization
 	void Start () {
@@ -30,21 +32,30 @@ public class Car1_controller : MonoBehaviour {
 	void Update () {
 		//getting player inpuit
 		float x = CrossPlatformInputManager.GetAxis ("Horizontal");
-		float y = CrossPlatformInputManager.GetAxis ("Vertical");
+		float y = accelerator.value - brake.value;
 
 		//movement by force
 		if(y != 0)
 		{
 			var forwardForce = y * transform.forward * Speed * Time.deltaTime;
-			//var turningForce = x * transform.right * rotationSpeed * Time.deltaTime; 
 
-			rb.AddForce(forwardForce);
 			transform.Rotate(0, x * Time.deltaTime * rotationSpeed, 0);
+			rb.AddForce(forwardForce);
 		}
+
 		//dampening sliding
-		var dampening = Vector3.Dot(transform.right, rb.velocity) * transform.right;
-		var dampeningImpulse = -dampening * rb.mass;
-		rb.AddForce(dampeningImpulse * Time.deltaTime);
+		var currentRightNormal = Vector3.Normalize(transform.right);
+		var lateralDampeningVector = Vector3.Dot(currentRightNormal, rb.velocity) * currentRightNormal;
+		var lateralDampeningImpulse = rb.mass * -lateralDampeningVector;
+		rb.AddForce(lateralDampeningImpulse * Time.deltaTime);
+
+		// more dampening
+		rb.AddTorque( 0.1f * rb.inertiaTensor.magnitude * -rb.angularVelocity );
+
+		//dampening when not moving
+		var currentForwardNormal = Vector3.Normalize(transform.right);
+		var forwardVelocity = Vector3.Dot(currentForwardNormal, rb.velocity) * currentForwardNormal;
+		scoreText.text = "Vel : " + forwardVelocity;
 
 		// removing unwanted rotations after any collisions
 		var oldYRotation = transform.localEulerAngles.y;
