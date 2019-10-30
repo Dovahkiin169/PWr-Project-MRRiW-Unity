@@ -28,19 +28,50 @@ public class Car1_controller : MonoBehaviour {
 		referenceYPosition = transform.localPosition.y;
 	}
 
+	void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.name == "racetrack")
+		{
+			rb.velocity = Vector3.zero;
+		}
+    }
+
+	private float xInput = 0;
+	private float yInput = 0;
+
 	// Update is called once per frame
 	void Update () {
 		//getting player inpuit
-		float x = CrossPlatformInputManager.GetAxis ("Horizontal");
-		float y = accelerator.value - brake.value;
+		xInput = CrossPlatformInputManager.GetAxis ("Horizontal");
+		yInput = accelerator.value - brake.value;
 
+		if (Input.GetKeyUp (KeyCode.Escape)) {
+                    Debug.Log ("onResume Received");
+                    AndroidJavaClass jc = new AndroidJavaClass ("com.unity3d.player.UnityPlayer"); 
+                    AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject> ("currentActivity"); 
+					jo.Call("shareText",scoreText.text);
+                    jo.Call ("onBackPressed");
+            }
+	}
+
+	void FixedUpdate()
+	{
 		//movement by force
-		if(y != 0)
+		if(yInput != 0)
 		{
-			var forwardForce = y * transform.forward * Speed * Time.deltaTime;
+			var movementForce = yInput * transform.forward * Speed * Time.deltaTime; 
 
-			transform.Rotate(0, x * Time.deltaTime * rotationSpeed, 0);
-			rb.AddForce(forwardForce);
+			var forwardVelocity = Vector3.Dot(Vector3.Normalize(transform.forward), rb.velocity);
+
+			if(forwardVelocity >= 0)
+			{
+				transform.Rotate(0, xInput * Time.deltaTime * rotationSpeed, 0);
+			}
+			else
+			{
+				transform.Rotate(0, -xInput * Time.deltaTime * rotationSpeed, 0);
+			}
+			rb.AddForce(movementForce);
 		}
 
 		//dampening sliding
@@ -52,11 +83,6 @@ public class Car1_controller : MonoBehaviour {
 		// more dampening
 		rb.AddTorque( 0.1f * rb.inertiaTensor.magnitude * -rb.angularVelocity );
 
-		//dampening when not moving
-		var currentForwardNormal = Vector3.Normalize(transform.right);
-		var forwardVelocity = Vector3.Dot(currentForwardNormal, rb.velocity) * currentForwardNormal;
-		scoreText.text = "Vel : " + forwardVelocity;
-
 		// removing unwanted rotations after any collisions
 		var oldYRotation = transform.localEulerAngles.y;
 		transform.localEulerAngles = new Vector3(0, oldYRotation, 0);
@@ -65,14 +91,6 @@ public class Car1_controller : MonoBehaviour {
 		var actualXPosition = transform.localPosition.x;
 		var actualZPosition = transform.localPosition.z;
 		transform.localPosition = new Vector3(actualXPosition, referenceYPosition, actualZPosition);
-
-		if (Input.GetKeyUp (KeyCode.Escape)) {
-                    Debug.Log ("onResume Received");
-                    AndroidJavaClass jc = new AndroidJavaClass ("com.unity3d.player.UnityPlayer"); 
-                    AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject> ("currentActivity"); 
-					jo.Call("shareText",scoreText.text);
-                    jo.Call ("onBackPressed");
-            }
 	}	
 }
 
