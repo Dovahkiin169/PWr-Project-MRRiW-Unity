@@ -8,6 +8,7 @@ TagManager:
   - Coin
   - Scorekeeper
   - Accelerator
+  - PauseHidden
   layers:
   - Default
   - TransparentFX

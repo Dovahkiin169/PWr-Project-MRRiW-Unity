@@ -29,6 +29,16 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
     protected virtual void Start()
     {
+        var hideable = GameObject.Find("MobileSingleStickControl").GetComponent<CanvasGroup>();
+        hideable.alpha = 0f;
+        hideable.interactable = false;
+        hideable.blocksRaycasts = false;
+
+        var pauseMenu = GameObject.Find("PauseMenu").GetComponent<CanvasGroup>();
+        pauseMenu.alpha = 1f;
+        pauseMenu.interactable = true;
+        pauseMenu.blocksRaycasts = true;
+
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
         if (mTrackableBehaviour)
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
@@ -87,6 +97,16 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     {
         if (mTrackableBehaviour)
         {
+            var hideable = GameObject.Find("MobileSingleStickControl").GetComponent<CanvasGroup>();
+            hideable.alpha = 1f;
+            hideable.interactable = true;
+            hideable.blocksRaycasts = true;
+
+            var pauseMenu = GameObject.Find("PauseMenu").GetComponent<CanvasGroup>();
+            pauseMenu.alpha = 0f;
+            pauseMenu.interactable = false;
+            pauseMenu.blocksRaycasts = false;
+
             var rendererComponents = mTrackableBehaviour.GetComponentsInChildren<Renderer>(true);
             var colliderComponents = mTrackableBehaviour.GetComponentsInChildren<Collider>(true);
             var canvasComponents = mTrackableBehaviour.GetComponentsInChildren<Canvas>(true);
@@ -110,6 +130,16 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     {
         if (mTrackableBehaviour)
         {
+            var hideable = GameObject.Find("MobileSingleStickControl").GetComponent<CanvasGroup>();
+            hideable.alpha = 0f;
+            hideable.interactable = false;
+            hideable.blocksRaycasts = false;
+
+            var pauseMenu = GameObject.Find("PauseMenu").GetComponent<CanvasGroup>();
+            pauseMenu.alpha = 1f;
+            pauseMenu.interactable = true;
+            pauseMenu.blocksRaycasts = true;
+
             var rendererComponents = mTrackableBehaviour.GetComponentsInChildren<Renderer>(true);
             var colliderComponents = mTrackableBehaviour.GetComponentsInChildren<Collider>(true);
             var canvasComponents = mTrackableBehaviour.GetComponentsInChildren<Canvas>(true);

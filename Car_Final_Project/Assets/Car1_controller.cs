@@ -10,7 +10,6 @@ public class Car1_controller : MonoBehaviour {
 	public Score score;
 	public Text scoreText;
 
-
 	private Rigidbody rb;
     public float Speed = 90.0f;
     public float rotationSpeed = 45.0f;

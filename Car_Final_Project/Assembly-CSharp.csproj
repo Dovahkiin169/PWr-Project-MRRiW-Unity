@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{9DB2D0E1-E550-F685-68AF-2E51416C63D7}</ProjectGuid>
+    <ProjectGuid>{73EF254A-81E7-E9E0-0090-4D0529629A71}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -47,8 +47,12 @@
   <ItemGroup>     <Compile Include="Assets\Car1_controller.cs" />
      <Compile Include="Assets\Coin.cs" />
      <Compile Include="Assets\CoinGenerator.cs" />
+     <Compile Include="Assets\Controller_Cop.cs" />
      <Compile Include="Assets\Goal.cs" />
+     <Compile Include="Assets\HelloWorld.cs" />
+     <Compile Include="Assets\JniUtil.cs" />
      <Compile Include="Assets\NitroController.cs" />
+     <Compile Include="Assets\RaceCar_controller.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
@@ -58,45 +62,47 @@
      <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
      <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
      <Compile Include="Assets\Score.cs" />
+     <Compile Include="Assets\SlowCar_controller.cs" />
      <Compile Include="Assets\Srcipt.cs" />
      <Compile Include="Assets\SrciptNew.cs" />
      <Compile Include="Assets\TrumController.cs" />
      <Compile Include="Assets\TrumpController.cs" />
      <Compile Include="Assets\TrumpController_New.cs" />
+     <Compile Include="Assets\VJPedal.cs" />
      <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
      <None Include="Assets\StreamingAssets\Vuforia\DollarDatabase.xml" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>C:/Users/erath/Projects/Unity/car_ar_game/New Unity Project (1)_Car1/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>D:/Programming/Projects/Games/argame/PWr-Project-MRRiW-Unity/Car_Final_Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>C:/Users/erath/Projects/Unity/car_ar_game/New Unity Project (1)_Car1/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>D:/Programming/Projects/Games/argame/PWr-Project-MRRiW-Unity/Car_Final_Project/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="VuforiaScripts">
- <HintPath>C:/Users/erath/Projects/Unity/car_ar_game/New Unity Project (1)_Car1/Library/ScriptAssemblies/VuforiaScripts.dll</HintPath>
+ <HintPath>D:/Programming/Projects/Games/argame/PWr-Project-MRRiW-Unity/Car_Final_Project/Library/ScriptAssemblies/VuforiaScripts.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/erath/Projects/Unity/car_ar_game/New Unity Project (1)_Car1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>D:/Programming/Projects/Games/argame/PWr-Project-MRRiW-Unity/Car_Final_Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/erath/Projects/Unity/car_ar_game/New Unity Project (1)_Car1/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Programming/Projects/Games/argame/PWr-Project-MRRiW-Unity/Car_Final_Project/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>C:/Users/erath/Projects/Unity/car_ar_game/New Unity Project (1)_Car1/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>D:/Programming/Projects/Games/argame/PWr-Project-MRRiW-Unity/Car_Final_Project/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="VuforiaEditorScripts">
- <HintPath>C:/Users/erath/Projects/Unity/car_ar_game/New Unity Project (1)_Car1/Library/ScriptAssemblies/VuforiaEditorScripts.dll</HintPath>
+ <HintPath>D:/Programming/Projects/Games/argame/PWr-Project-MRRiW-Unity/Car_Final_Project/Library/ScriptAssemblies/VuforiaEditorScripts.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/erath/Projects/Unity/car_ar_game/New Unity Project (1)_Car1/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>D:/Programming/Projects/Games/argame/PWr-Project-MRRiW-Unity/Car_Final_Project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>C:/Users/erath/Projects/Unity/car_ar_game/New Unity Project (1)_Car1/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>D:/Programming/Projects/Games/argame/PWr-Project-MRRiW-Unity/Car_Final_Project/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/erath/Projects/Unity/car_ar_game/New Unity Project (1)_Car1/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>D:/Programming/Projects/Games/argame/PWr-Project-MRRiW-Unity/Car_Final_Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/erath/Projects/Unity/car_ar_game/New Unity Project (1)_Car1/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>D:/Programming/Projects/Games/argame/PWr-Project-MRRiW-Unity/Car_Final_Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.8f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -276,7 +282,7 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.8f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
  </Reference>
  <Reference Include="Vuforia.UnityExtensions">
- <HintPath>C:/Users/erath/Projects/Unity/car_ar_game/New Unity Project (1)_Car1/Library/PackageCache/com.ptc.vuforia.engine@8.3.9/Vuforia/Plugins/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
+ <HintPath>D:/Programming/Projects/Games/argame/PWr-Project-MRRiW-Unity/Car_Final_Project/Library/PackageCache/com.ptc.vuforia.engine@8.3.9/Vuforia/Plugins/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.8f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -635,7 +641,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{29A99614-694A-3F4F-C503-BC871663C41A}</Project>
+      <Project>{0CAB2E54-CEB8-194F-0CD8-D0F8157A77A7}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
   </ItemGroup>
